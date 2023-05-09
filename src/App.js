@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SignIn from './component/signIn';
+import SignUp from './component/signUp';
+import Account from './component/account';
+import Home from "./component/home"
+// import { useNavigate } from 'react-router-dom';
+// import {Link } from 'react-router-dom';
+import { useState } from 'react';
+import "./App.css"
 
 function App() {
+  // const navigate = useNavigate()
+  const [active, setActive] = useState("")
+  const changeHandler=(val)=>{
+    setActive(val)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div  >
+      {/* <h1>Welcome to PopX</h1>
+      <p>Loreum ipsump dolor sit ammet</p>
+      <p>Loreum ipsump dolor sit ammet</p>
+    
+      <Button onClick={()=>setActive("SignUp")} style={{backgroundColor:"blueviolet"}}>Create Account</Button><br></br><br></br>
+
+      <Button onClick={()=>setActive("SignIn")} style={{backgroundColor:"grey"}}>Already Registerted? Login</Button><br></br><br></br> */}
+
+      <div>
+        {active === "" && <Home changeHandler={changeHandler}/>}
+        {active === "SignIn" &&  <SignIn /> }
+        {active === "SignUp" &&  <SignUp /> }
+        {active === "Account" && <Account /> }
+
+      </div>
+
     </div>
   );
 }
